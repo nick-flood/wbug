@@ -1,4 +1,4 @@
-FROM node:12
+FROM node:latest
 
 RUN apt-get update && apt-get install -y wget --no-install-recommends \
   && apt-get update \
@@ -36,9 +36,7 @@ WORKDIR /app
 COPY ./package.json ./package.json
 COPY ./test.perf.ts ./test.perf.ts
 
-RUN npm install
-
-RUN npm install -g element-cli@1.5.1 --unsafe-perm=true
+RUN npm install -g element-cli@1.5.1 
 
 ENV NO_CHROME_SANDBOX=1
 
